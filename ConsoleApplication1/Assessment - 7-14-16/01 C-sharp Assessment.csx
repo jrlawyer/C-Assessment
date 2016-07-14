@@ -15,10 +15,7 @@ var dec = 1.2m;  //decimal
 
 void myAge(string s, int i)  //Function
 {
-    //var s = "Jennifer";
-    //var i = 33;
-
-    Console.WriteLine(s + " " + "is" + " " + i + " " + "years old.");  //3. print the string to the console
+   Console.WriteLine(s + " " + "is" + " " + i + " " + "years old.");  //3. print the string to the console
 }
 
 myAge();  //Call function
