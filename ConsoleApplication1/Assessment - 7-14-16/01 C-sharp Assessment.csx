@@ -13,13 +13,21 @@ var dec = 1.2m;  //decimal
 
 //2. Function
 
-void myAge(string s, int i)  //Function
+//void myAge(string s, int i)  //Function
+//{
+//   Console.WriteLine(s + " " + "is" + " " + i + " " + "years old.");  //3. print the string to the console
+//}
+
+//myAge();  //Call function
+
+string myAge(string s, int i)
 {
-   Console.WriteLine(s + " " + "is" + " " + i + " " + "years old.");  //3. print the string to the console
+    var age = (s + " " + "is" + " " + i + " " + "years old.");
+    return age;
 }
 
-myAge();  //Call function
-
+var test = myAge("Jennifer", 33);
+Console.WriteLine(test);
 
 //4. Array
 
