@@ -1,1 +1,6 @@
 C:\Users\Jennifer\Desktop\DotNet\Assessment\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\Jennifer\Desktop\DotNet\Assessment\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\Jennifer\Desktop\DotNet\Assessment\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\Jennifer\Desktop\DotNet\Assessment\ConsoleApplication1\obj\Debug\Assessment.csprojResolveAssemblyReference.cache
+C:\Users\Jennifer\Desktop\DotNet\Assessment\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\Jennifer\Desktop\DotNet\Assessment\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
