@@ -2,34 +2,34 @@
 
 ////Part One:  The Basics
 
-////1.Types
+//1.Types
 
-//var i = 33;  //int
-//var b = true;  //boolean
-//var s = "Jennifer";  //string
-//var d = 1.20f;  //double
-//var dec = 1.2m;  //decimal
+var i = 33;  // Int.
+var b = true;  // Boolean.
+var s = "Jennifer";  // String.
+var d = 1.20f;  // Double.
+var dec = 1.2m;  // Decimal.
 
 
-////2. Function
+//2. Function
 
-//string myAge(string s, int i)  //function
-//{
-//    var age = $"{s} is {i} years old.";  //string interpolation
-//    return age;
-//}
+string MyAge(string s, int i)  // Function.
+{
+    var age = ($"{s} is {i} years old.");  // String interpolation.
+    return age;
+}
 
-//var test = myAge("Jennifer", 33);
-//Console.WriteLine(test);  //print to Console
-//// or as an alternative means of printing to Console...
+var test = MyAge("Jennifer", 33);
+Console.WriteLine(test);  // 3. Print to Console.
+// or as an alternative means of printing to Console...
 //Console.WriteLine(myAge("Jennifer", 33));
 
-////4. Array
+//4. Array
 
-//var myArray = new[] { "James", "Judy", "Tony", "Steph", "Amond" }; //array
+var MyArray = new[] { "James", "Judy", "Tony", "Steph", "Amond" };
 
-//foreach (var name in myArray)  //loop
-//    Console.WriteLine(name);
+foreach (var name in MyArray)  //loop
+    Console.WriteLine(name);
 
 
 //Part Two:
@@ -39,7 +39,7 @@ public enum Gender { Unknown, Male, Female }; // 1. Create an enum.
 
 public class Customer // 1. Create a class.
 {
-    public Customer(string name, Gender gender, string product) // 3. Create a constructor.
+    public Customer(string name, Gender gender, string product) // 2. Create a constructor.
     {
         Name = name;
         Gender = gender;
@@ -74,7 +74,7 @@ public class Customer // 1. Create a class.
         Console.WriteLine($"Hello {Name}! We will be having a sale on {SaleDate:d}.");
     }
 
-    public void SendSalesNotice(string item, DateTime SaleDate)// 4. Write a method with string and date parameters.
+    public void SendSalesNotice(string item, DateTime SaleDate)// 4. Write an overloaded method with string and date parameters.
     {
         Console.WriteLine($"Hello {Name}! We will be having a sale on {item} on {SaleDate:d}.");
     }
@@ -99,17 +99,17 @@ public enum NotPurchasing { Irate, Moved, Uninterested };  // 10. Add an enum.
 sealed class InactiveCustomer  // 5. Subclass of Inactive Customer.
     : Customer
 {
-    public InactiveCustomer(int monthsInactive, string name, Gender gender, string product, NotPurchasing reason) 
+    public InactiveCustomer(int monthsInactive, string name, Gender gender, string product, NotPurchasing notpurchasing) 
         : base(name, gender, product) // 6. Create a constructor, 11. Added property to constructor.
     {
         MonthsInactive = monthsInactive;
-        Reason = reason;
+        NotPurchasing = notpurchasing;
     }
 
     public int MonthsInactive  // 5. Property of MonthsInactive.
     { get;set;}
 
-    public NotPurchasing Reason  // 11. Property of Reason (NotPurchasing).
+    public NotPurchasing NotPurchasing  // 11. Property of NotPurchasing.
     { get; set; }
 
     //public override string ToString() // Redundant due to PrintCustomerInfo.
@@ -119,22 +119,25 @@ sealed class InactiveCustomer  // 5. Subclass of Inactive Customer.
 
     public override void PrintCustomerInfo() // 12. Add a method that overrides PrintCustomerInfo.
     {
-        Console.WriteLine($"{Name} - {Product} - {Gender} - {MonthsInactive} - {Reason}");
+        Console.WriteLine($"{Name} - {Product} - {Gender} - {MonthsInactive} - {NotPurchasing}");
     } 
 
     public void Notification()  // 7. Create a method.
     {
         if (MonthsInactive > 4)
         {
-            Console.WriteLine($"We appreciate your business, {Name}!  We saw you purchased {Product} from us {MonthsInactive} ago. If you're intereted in our current deals, let us know.");
+            Console.WriteLine($"We appreciate your business, {Name}!  We saw you purchased {Product} from us {MonthsInactive} months ago. If you're intereted in our current deals, let us know.");
         } 
     }
 }
 
 // 8. New instance of class.
-var j = new InactiveCustomer(5, "James", Gender.male, "golf clubs", NotPurchasing.Uninterested);
+var j = new InactiveCustomer(5, "James", Gender.Male, "golf clubs", NotPurchasing.Uninterested);
 j.Notification();  //7. Calling method.
 j.PrintCustomerInfo();  //9. Calling method.
+
+// New Instance of class.
+var s = new InactiveCustomer(7, "Steph", Gender.Female, "exercise ball", NotPurchasing.Irate);
 
 
 // Testing Inheritance.
