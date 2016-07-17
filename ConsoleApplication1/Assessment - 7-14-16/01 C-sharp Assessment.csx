@@ -33,83 +33,96 @@
 
 
 //Part Two:
-//In progress
 
 
-public enum Gender { unknown, male, female }; //1. enum
+public enum Gender { Unknown, Male, Female }; // 1. Create an enum.
 
-public class Customer //1.class
+public class Customer // 1. Create a class.
 {
-    public Customer(string name, Gender gender, string product) //2. constructor
+    public Customer(string name, Gender gender, string product) // 3. Create a constructor.
     {
         Name = name;
         Gender = gender;
         Product = product;
     }
-    public string Name  //1. property
+    public string Name  // 1. Create a property.
     { get; set; }
 
-    public Gender Gender //1. property
+    public Gender Gender // 1. Create a property.
     { get; set; }
 
-    public string Product //1. property
+    public string Product //1. Create a property.
     { get; set; }
 
-    public override string ToString()
+    //public override string ToString()  // Redundant due to PrintCustomerInfo.
+    //{
+    //    return $"{Name} {Gender} {Product}";
+    //}
+
+    public virtual void PrintCustomerInfo() // 9. Add an overridable, "virtual," method.
     {
-        return $"{Name} {Gender} {Product}";
+        Console.WriteLine($"{Name} - {Product} - {Gender}");
     }
 
-    public void Thanks()  //3. write a method
+    public void Thanks()  // 3. Write a "thanks" method.
     {
-        Console.WriteLine($"Hello {Name}; thanks for purchasing our {Product}!");
+        Console.WriteLine($"Hello {Name}! Thank you for purchasing our {Product}; we appreciate your business!");
     }
 
-    public void SendSalesNotice(DateTime SaleDate) //4. write a method with date parameter
+    public void SendSalesNotice(DateTime SaleDate) // 4. Write a method with date parameter.
     {
         Console.WriteLine($"Hello {Name}! We will be having a sale on {SaleDate:d}.");
     }
 
-    public void SendSalesNotice(string item, DateTime SaleDate)//4. write a method with string and date parameters
+    public void SendSalesNotice(string item, DateTime SaleDate)// 4. Write a method with string and date parameters.
     {
         Console.WriteLine($"Hello {Name}! We will be having a sale on {item} on {SaleDate:d}.");
     }
 }
 
-var c = new Customer("Jennifer", Gender.female, "yoga mats");  //8. New instance of class
-Console.WriteLine(c); //8. print to console 
+var c = new Customer("Jennifer", Gender.Female, "yoga mats");  // 8. New instance of class.
+//Console.WriteLine(c); // 8. Printing to console. Redundant due to PrintCustomerInfo.
 
-c.Thanks();  //3. Calling method on var c; 8. test method
+c.Thanks();  // 3. Calling the method on var c; 8. Testing method.
 
-c.SendSalesNotice(new DateTime (2016, 9, 5)); //4. calling method
+c.SendSalesNotice(new DateTime (2016, 9, 5)); // 4. Calling the method.
 
-c.SendSalesNotice("yoga pants", new DateTime(2016, 9, 5));  //4. calling method
+c.SendSalesNotice("yoga pants", new DateTime(2016, 9, 5));  // 4. Calling the method.
 
-
-
-
-
+c.PrintCustomerInfo();  // 9. Calling the method.
+ 
 
 
 
-sealed class InactiveCustomer  //5. Subclass of Inactive Customer
+public enum NotPurchasing { Irate, Moved, Uninterested };  // 10. Add an enum.
+
+sealed class InactiveCustomer  // 5. Subclass of Inactive Customer.
     : Customer
 {
-    public InactiveCustomer(int monthsInactive, string name, Gender gender, string product) 
-        : base(name, gender, product) //6. Create a constructor
+    public InactiveCustomer(int monthsInactive, string name, Gender gender, string product, NotPurchasing reason) 
+        : base(name, gender, product) // 6. Create a constructor, 11. Added property to constructor.
     {
         MonthsInactive = monthsInactive;
+        Reason = reason;
     }
 
-    public int MonthsInactive  //5. Property of MonthsInactive
+    public int MonthsInactive  // 5. Property of MonthsInactive.
     { get;set;}
 
-    public override string ToString()
-    {
-        return $"{MonthsInactive} {Name} {Gender} {Product}";
-    }
+    public NotPurchasing Reason  // 11. Property of Reason (NotPurchasing).
+    { get; set; }
 
-    public void Notification()
+    //public override string ToString() // Redundant due to PrintCustomerInfo.
+    //{
+    //    return $"{MonthsInactive} {Name} {Gender} {Product} {Reason}";
+    //}
+
+    public override void PrintCustomerInfo() // 12. Add a method that overrides PrintCustomerInfo.
+    {
+        Console.WriteLine($"{Name} - {Product} - {Gender} - {MonthsInactive} - {Reason}");
+    } 
+
+    public void Notification()  // 7. Create a method.
     {
         if (MonthsInactive > 4)
         {
@@ -118,6 +131,19 @@ sealed class InactiveCustomer  //5. Subclass of Inactive Customer
     }
 }
 
+// 8. New instance of class.
+var j = new InactiveCustomer(5, "James", Gender.male, "golf clubs", NotPurchasing.Uninterested);
+j.Notification();  //7. Calling method.
+j.PrintCustomerInfo();  //9. Calling method.
 
-var j = new InactiveCustomer(5, "James", Gender.male, "golf clubs");
-j.Notification
+
+// Testing Inheritance.
+j.SendSalesNotice(new DateTime(2016, 9, 5));
+j.SendSalesNotice("golf bags", new DateTime(2016, 9, 5));
+j.Thanks();
+
+// Testing overridden method.
+c.PrintCustomerInfo();
+j.PrintCustomerInfo();
+
+
