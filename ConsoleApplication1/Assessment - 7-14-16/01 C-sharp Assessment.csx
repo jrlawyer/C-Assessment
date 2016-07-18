@@ -1,6 +1,6 @@
 ﻿using System;
 
-////Part One:  The Basics
+//Part One:  The Basics
 
 //1.Types
 
@@ -83,11 +83,11 @@ public class Customer // 1. Create a class.
 var c = new Customer("Jennifer", Gender.Female, "yoga mats");  // 8. New instance of class.
 //Console.WriteLine(c); // 8. Printing to console. Redundant due to PrintCustomerInfo.
 
-c.Thanks();  // 3. Calling the method on var c; 8. Testing method.
+c.Thanks();  // 3. Calling the method on var c; 8. Testing the method.
 
-c.SendSalesNotice(new DateTime (2016, 9, 5)); // 4. Calling the method.
+c.SendSalesNotice(new DateTime (2016, 9, 5)); // 4. Calling the method; 8. Testing the method.
 
-c.SendSalesNotice("yoga pants", new DateTime(2016, 9, 5));  // 4. Calling the method.
+c.SendSalesNotice("yoga pants", new DateTime(2016, 9, 5));  // 4. Calling the method; 8. Testing the method.
 
 c.PrintCustomerInfo();  // 9. Calling the method.
  
@@ -99,11 +99,11 @@ public enum NotPurchasing { Irate, Moved, Uninterested };  // 10. Add an enum.
 sealed class InactiveCustomer  // 5. Subclass of Inactive Customer.
     : Customer
 {
-    public InactiveCustomer(int monthsInactive, string name, Gender gender, string product, NotPurchasing notpurchasing) 
+    public InactiveCustomer(int monthsInactive, string name, Gender gender, string product, NotPurchasing notPurchasing) 
         : base(name, gender, product) // 6. Create a constructor, 11. Added property to constructor.
     {
         MonthsInactive = monthsInactive;
-        NotPurchasing = notpurchasing;
+        NotPurchasing = notPurchasing;
     }
 
     public int MonthsInactive  // 5. Property of MonthsInactive.
